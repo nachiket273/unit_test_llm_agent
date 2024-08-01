@@ -7,8 +7,15 @@ import pathlib
 
 
 class Logger:
+    """
+    Custom logger class that writes the logs to file
+    and STDOUT
+    """
     @classmethod
     def get_logger(cls, path: str) -> logging.Logger:
+        """
+        Returns Logger with FileLogger and StreamLogger
+        """
         log_dir = pathlib.Path(path)
         if not log_dir.exists():
             raise FileNotFoundError(f"Log directory {path} doesn't exists.")
@@ -23,7 +30,8 @@ class Logger:
         if clogger.handlers:
             clogger.handlers.clear()
 
-        fmt = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+        fmt = logging.Formatter("%(asctime)s - %(name)s -"
+                                " %(levelname)s - %(message)s")
 
         # File handler for writing to log file
         file_handler = logging.FileHandler(log_file, mode='a')
