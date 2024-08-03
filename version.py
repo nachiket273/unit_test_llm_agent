@@ -1,7 +1,6 @@
 """
 python file to get the current version read from version.txt
 """
-
 from pathlib import Path
 
 

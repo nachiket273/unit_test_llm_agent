@@ -15,6 +15,16 @@ class Logger:
     def get_logger(cls, path: str) -> logging.Logger:
         """
         Returns Logger with FileLogger and StreamLogger
+
+        Args:
+            path(str) : Path to Log Directory
+
+        Example:
+            >>> path = './log'
+            >>> clogger = Logger.get_logger(path)
+
+        Return:
+            Logger object with FileHnadler and StreamHandler
         """
         log_dir = pathlib.Path(path)
         if not log_dir.exists():
@@ -23,7 +33,7 @@ class Logger:
             raise Exception(f"Path {path} is not a directory.")
 
         today = datetime.now().strftime('%Y%m%d')
-        clogger = logging.getLogger(today)
+        clogger = logging.getLogger(__name__)
         clogger.setLevel(logging.DEBUG)
 
         log_file = log_dir.joinpath(today + ".log")
@@ -46,3 +56,6 @@ class Logger:
         clogger.addHandler(console_handler)
 
         return clogger
+
+
+clogger = Logger.get_logger('./log')

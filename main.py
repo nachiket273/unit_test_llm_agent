@@ -1,5 +1,5 @@
 """
-Argument Parser
+Main file
 """
 import argparse
 from argparse import Namespace
