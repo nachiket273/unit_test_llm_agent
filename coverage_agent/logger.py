@@ -40,8 +40,8 @@ class Logger:
         if clogger.handlers:
             clogger.handlers.clear()
 
-        fmt = logging.Formatter("%(asctime)s - %(name)s -"
-                                " %(levelname)s - %(message)s")
+        fmt = logging.Formatter("%(asctime)s - %(levelname)s"
+                                " - %(message)s")
 
         # File handler for writing to log file
         file_handler = logging.FileHandler(log_file, mode='a')
@@ -58,4 +58,4 @@ class Logger:
         return clogger
 
 
-clogger = Logger.get_logger('./log')
+cust_logger = Logger.get_logger('./log')
